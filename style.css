@@ -9,22 +9,22 @@
 }
 
 :root {
-    --bg-color: #000000;
-    --second-bg-color: #131313;
-    --text-color: white;
-    --main-color: #332f7e;
-    --box-shadow: var(--main-color);
-    --nav-color: rgba(0, 0, 0, 0.822);
-}
-
-/*DAY THEME*/
-.day-theme:root {
     --bg-color: #ffffff;
     --second-bg-color: #f1f1f1;
     --text-color: #272727;
     --main-color: #2E287D;
     --box-shadow: var(--main-color) transparent;
-    --nav-color: rgba(255, 255, 255, 0.822);
+    --nav-color: rgba(255, 255, 255, 0.856); /* Ensure transparency */
+}
+
+/*DARK THEME*/
+.dark-theme {
+    --bg-color: #000000;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #332f7e;
+    --box-shadow: var(--main-color);
+    --nav-color: rgba(0, 0, 0, 0.822); /* Ensure transparency */
 }
 
 html {
@@ -97,6 +97,7 @@ body {
     font-size: 3.6rem;
     color: var(--main-color);
     display: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /*TOGGLE SLIDER*/
@@ -128,14 +129,14 @@ body {
 
 .slider:before {
     position: absolute;
-    content: "";
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>');
     height: 26px;
     /*BALL SIZE*/
     width: 26px;
     left: 4px;
     /*push ball from corner*/
     bottom: 4px;
-    background-color: var(--bg-color); 
+    background-color: var(--bg-color) transparent; 
     /*BALL COLOR*/
     -webkit-transition: .4s;
     transition: .5s;
@@ -149,11 +150,13 @@ input:checked+.slider {
 input:focus+.slider {
     box-shadow: 0 0 1px var(--bg-color);
 }
-
+/*lua*/
 input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
+    color: white;
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>');
 }
 
 /* Rounded sliders */
@@ -301,7 +304,7 @@ span {
 .btn-group a:nth-of-type(2):hover {
     box-shadow: 0 0 25px var(--box-shadow);
     background-color: var(--main-color);
-    color: var(--bg-color);
+    color: var (--bg-color);
 }
 
 .text-animation {
@@ -506,6 +509,7 @@ span {
 
 .bx {
     font-size: larger;
+    cursor: pointer;
 }
 
 /*RESIZE SOCIAL ICON*/
@@ -1073,8 +1077,7 @@ textarea {
 }
 
 .footer ul li a:hover {
-    border-bottom: 3px solid var(--main-color);
-    color: var (--main-color);
+    border-bottom: 3px solid var (--main-color);
 
 }
 
@@ -1174,6 +1177,8 @@ textarea {
 @media(max-width: 895px) {
     #menu-icon {
         display: block;
+        font-size: 6.6rem;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .navbar {
@@ -1183,16 +1188,24 @@ textarea {
         right: 0;
         width: 50%;
         padding: 1rem 3%;
-        background: var(--nav-color);
-        backdrop-filter: blur(4px);
+        background: var(--nav-color); /* Ensure transparency */
+        backdrop-filter: blur(4px); /* Add backdrop filter */
+        -webkit-backdrop-filter: blur(4px); /* Add for better browser support */
         border-bottom-left-radius: 2rem;
-        border-left: 2px solid var(--main-color);
+        /* border-left: 1px solid var(--main-color); */
         border-bottom: 2px solid var(--main-color);
         display: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateX(100%);
+        opacity: 0;
     }
 
     .navbar.active {
         display: block;
+        transform: translateX(0);
+        opacity: 1;
+        backdrop-filter: blur(4px); /* Ensure blur effect is applied */
+        -webkit-backdrop-filter: blur(4px); /* Add for better browser support */
     }
 
     .navbar a {
@@ -1287,7 +1300,7 @@ textarea {
 }
 
 .contact form textarea {
-    height: calc(3 * 1rem + 2 * 1rem + 2 * 2px); /* Set height to a maximum of three fields */
+    height: 80px; /* Set height to a maximum of three fields */
 }
 
 .contact-form .btn {

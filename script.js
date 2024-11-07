@@ -1,10 +1,13 @@
 //darkmode
-const $html = document.querySelector('html')
-const $checkbox = document.querySelector('#switch')
+const $html = document.querySelector('html');
+const $checkbox = document.querySelector('#switch');
+
+// Apply light theme by default
+$html.classList.remove('dark-theme');
 
 $checkbox.addEventListener('change', function(){
-    $html.classList.toggle('day-theme')
-})
+    $html.classList.toggle('dark-theme');
+});
 
 //menu toggle to hamburger
 //vars
@@ -32,4 +35,19 @@ window.onscroll = () => {
 menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
-} 
+    if (navbar.classList.contains('active')) {
+        menuIcon.style.opacity = '0';
+        setTimeout(() => {
+            menuIcon.style.opacity = '1';
+        }, 100);
+    } else {
+        menuIcon.style.opacity = '0';
+        setTimeout(() => {
+            menuIcon.style.opacity = '1';
+        }, 100);
+    }
+};
+menuIcon.style.transition = 'transform 0.3s ease';
+menuIcon.addEventListener('click', () => {
+    menuIcon.style.transform = menuIcon.classList.contains('bx-x') ? 'rotate(180deg)' : 'rotate(0)';
+});
