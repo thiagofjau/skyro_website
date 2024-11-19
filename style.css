@@ -602,6 +602,7 @@ span {
     text-align: center;
     transition: 0.4s ease;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    align-self: self-start;
     max-width: 450px;
 }
 
@@ -1140,14 +1141,17 @@ span {
     .pricing-container {
         grid-template-columns: repeat(2, 1fr);
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        /* flex-direction: column; */
+        /* align-items: center; */
+        justify-content: center;
         min-width: 400px;
     }
 }
 
 @media (max-width: 768px) {
     .pricing-container {
+        display: flex;
+        flex-direction: column;
         grid-template-columns: 1fr;
     }
 }
@@ -1646,6 +1650,8 @@ textarea {
     justify-content: space-around;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    justify-self: center;
+    gap: 28px;
 }
 
 .footer-column {
@@ -1770,7 +1776,8 @@ hr {
     color: var(--text-color);
 }
 
-@media (max-width: 968px) {
+/* tablet */
+/* @media (max-width: 968px) {
     .about-content {
         flex-direction: column;
     }
@@ -1782,7 +1789,7 @@ hr {
     .about-text {
         padding: 3rem;
     }
-}
+} */
 
 @media (max-width: 480px) {
     .about-text h2 {
