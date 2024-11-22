@@ -52,7 +52,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 10 px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     z-index: 5;
 }
 
@@ -196,6 +196,7 @@ section {
     text-align: left;
     justify-content: center;
     margin-top: 3rem;
+    margin-bottom: -50px;
 }
 
 span {
@@ -354,17 +355,17 @@ span {
 
     0%,
     20% {
-        content: "Marketing Digital";
+        content: "Marketing";
     }
 
     21%,
     40% {
-        content: "Criação de Sites";
+        content: "Sites";
     }
 
     41%,
     60% {
-        content: "Gestão de Redes Sociais";
+        content: "Social Mídia";
     }
 
     61%,
@@ -744,8 +745,14 @@ span {
 }
 
 @media (max-width: 768px) {
+    body {
+        overflow: hidden;
+    }
     .blog-posts-container {
         grid-template-columns: 1fr;
+    }
+    .price-box{
+        align-self: center;
     }
 
     .blog-post-card {
@@ -1861,3 +1868,57 @@ hr {
 p.founder-bach {
     font-size: 1.3rem;
 }
+
+/* ...existing code... */
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    margin-top:-50px;
+}
+
+.project-box {
+    background-color: var(--second-bg-color);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.project-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.project-info h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+.project-info p {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.project-img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ...existing code... */
